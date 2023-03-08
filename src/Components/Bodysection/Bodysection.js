@@ -9,13 +9,10 @@ const Bodysection = () => {
           <h2>
             We are team of talented designers making websites with Bootstrap
           </h2>
-          <a href="#about" class="btn-get-started scrollto">
-            Get Started
-          </a>
         </div>
       </section>
 
-      <main id="main"></main>
+      {/*<main id="main"></main>*/}
 
       <section id="about" class="about">
         <div class="container">
@@ -84,10 +81,6 @@ const Bodysection = () => {
           <div class="row">
             <div class="col-lg-6 video-box align-self-baseline position-relative">
               <img src="assets/img/about.jpg" class="img-fluid" alt=""></img>
-              <a
-                href="https://www.youtube.com/watch?v=jDDaplaOz7Q"
-                class="glightbox play-btn mb-4"
-              ></a>
             </div>
 
             <div class="col-lg-6 pt-3 pt-lg-0 content">
