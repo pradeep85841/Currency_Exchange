@@ -33,7 +33,7 @@ const Header = () => {
         <div className="container d-flex align-items-center justify-content-between">
           <div className="logo">
             <h1 className="text-light">
-              <a href="index.html">Currency Exchange</a>
+              <a>Currency Exchange</a>
             </h1>
             <a href="index.html">
               <img src="assets/img/logo.png" alt="" className="img-fluid"></img>
@@ -43,7 +43,9 @@ const Header = () => {
           <nav id="navbar" className="navbar">
             <ul>
               <li>
-                <a className="active">Home</a>
+                <a style={{ color: "#122e44" }} className="active">
+                  Home
+                </a>
               </li>
               <li className="dropdown">
                 <a>

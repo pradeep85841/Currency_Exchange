@@ -1,6 +1,29 @@
 import React from "react";
 import "./Bodysection.css";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import { AiOutlineSwap } from "react-icons/ai";
+
+const resultStyle = {
+  width: "50%",
+  maxWidth: 360,
+  bgcolor: "background.paper",
+};
+
 function Bodysection() {
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <div>
       <section id="hero">
@@ -21,56 +44,72 @@ function Bodysection() {
                   <div className="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                     <div className="count-box py-5">
                       <i className="bi bi-emoji-smile"></i>
-                      <span
-                        data-purecounter-start="0"
-                        data-purecounter-end="65"
-                        className="purecounter"
-                      >
-                        0
-                      </span>
-                      <p>Happy Clients</p>
+                      <span>Amount</span>
+                      <TextField
+                        hiddenLabel
+                        id="filled-hidden-label-normal"
+                        variant="filled"
+                      />
                     </div>
                   </div>
 
                   <div className="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                     <div className="count-box py-5">
                       <i className="bi bi-journal-richtext"></i>
-                      <span
-                        data-purecounter-start="0"
-                        data-purecounter-end="85"
-                        className="purecounter"
-                      >
-                        0
-                      </span>
-                      <p>Projects</p>
+                      <span>From</span>
+                      <FormControl variant="filled" sx={{ minWidth: 220 }}>
+                        <InputLabel id="demo-simple-select-filled-label"></InputLabel>
+                        <Select
+                          labelId="demo-simple-select-filled-label"
+                          id="demo-simple-select-filled"
+                          value={age}
+                          onChange={handleChange}
+                        >
+                          <MenuItem value="">
+                            <em>None</em>
+                          </MenuItem>
+                          <MenuItem value={10}>Ten</MenuItem>
+                          <MenuItem value={20}>Twenty</MenuItem>
+                          <MenuItem value={30}>Thirty</MenuItem>
+                        </Select>
+                      </FormControl>
                     </div>
                   </div>
 
                   <div className="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                     <div className="count-box pb-5 pt-0 pt-lg-5">
                       <i className="bi bi-clock"></i>
-                      <span
-                        data-purecounter-start="0"
-                        data-purecounter-end="27"
-                        className="purecounter"
-                      >
-                        0
+                      <span>
+                        <br></br>
                       </span>
-                      <p>Years of experience</p>
+                      <p>
+                        <AiOutlineSwap
+                          style={{ color: "#122e44", fontSize: "50px" }}
+                        />
+                      </p>
                     </div>
                   </div>
 
                   <div className="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                     <div className="count-box pb-5 pt-0 pt-lg-5">
                       <i className="bi bi-award"></i>
-                      <span
-                        data-purecounter-start="0"
-                        data-purecounter-end="22"
-                        className="purecounter"
-                      >
-                        0
-                      </span>
-                      <p>Awards</p>
+                      <span>To</span>
+                      <FormControl variant="filled" sx={{ minWidth: 220 }}>
+                        <InputLabel id="demo-simple-select-filled-label"></InputLabel>
+                        <Select
+                          labelId="demo-simple-select-filled-label"
+                          id="demo-simple-select-filled"
+                          value={age}
+                          onChange={handleChange}
+                        >
+                          <MenuItem value="">
+                            <em>None</em>
+                          </MenuItem>
+                          <MenuItem value={10}>Ten</MenuItem>
+                          <MenuItem value={20}>Twenty</MenuItem>
+                          <MenuItem value={30}>Thirty</MenuItem>
+                        </Select>
+                      </FormControl>
                     </div>
                   </div>
                 </div>
@@ -78,15 +117,33 @@ function Bodysection() {
             </div>
 
             <div className="row">
-              <div className="col-lg-6 video-box align-self-baseline position-relative">
-                <img src=" " className="img-fluid" alt=""></img>
+              <div
+                style={{ paddingLeft: "90px" }}
+                className="col-lg-6 video-box align-self-baseline position-relative"
+              >
+                <List
+                  sx={resultStyle}
+                  component="nav"
+                  aria-label="mailbox folders"
+                >
+                  <ListItem>
+                    <ListItemText primary="Exchange Rate" />= 00.0
+                  </ListItem>
+                  <Divider />
+                  <ListItem divider>
+                    <ListItemText primary="Exchange Amount" />= 00.0
+                  </ListItem>
+                  <Divider light />
+                </List>
               </div>
 
-              <div className="col-lg-6 pt-3 pt-lg-0 content">
-                <h3>
-                  Voluptatem dignissimos provident quasi corporis voluptates sit
-                  assumenda.
-                </h3>
+              <div
+                style={{ paddingLeft: "37%" }}
+                className="col-lg-6 pt-3 pt-lg-0 content"
+              >
+                <Button variant="contained" size="large">
+                  convert
+                </Button>
               </div>
             </div>
           </div>

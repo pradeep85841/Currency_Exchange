@@ -13,7 +13,7 @@
 
 #hero:before {
   content: "";
-  background: rgba(15, 5, 104, 0.4);
+  background: rgba(28, 7, 219, 0.781);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -195,12 +195,12 @@ section {
 }
 
 .about .count-box span {
-  font-size: 28px;
+  /*  font-size: 28px;*/
   line-height: 24px;
-  display: block;
-  font-weight: 700;
-  color: #646c55;
-  margin-left: 60px;
+  /* display: block;*/
+  /*font-weight: 700;*/
+  color: #122e44;
+  margin-left: 1px;
 }
 
 .about .count-box p {
@@ -209,7 +209,6 @@ section {
   font-family: "Raleway", sans-serif;
   font-weight: 600;
   font-size: 14px;
-  color: #646c55;
 }
 
 .about .count-box a {
