@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import "./Bodysection.css";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
@@ -19,11 +20,42 @@ const resultStyle = {
 };
 
 function Bodysection() {
-  const [age, setAge] = React.useState("");
+  const [amount, setAmount] = useState("");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [results, setResults] = useState("");
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const fetchApi = async () => {
+    await fetch(`https://currencyexchange-bec7.onrender.com/convert`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        from: `${from}`,
+        to: `${to}`,
+        amount: `${amount}`,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        let rate = data.amount;
+        setResults(rate);
+      })
+      .catch(function (error) {
+        console.log(
+          "There has been a problem with fetch operation: ",
+          error.message
+        );
+      });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    fetchApi();
+  };
+
   return (
     <div>
       <section id="hero">
@@ -49,6 +81,11 @@ function Bodysection() {
                         hiddenLabel
                         id="filled-hidden-label-normal"
                         variant="filled"
+                        value={amount}
+                        type="number"
+                        onChange={(e) => {
+                          setAmount(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
@@ -58,19 +95,25 @@ function Bodysection() {
                       <i className="bi bi-journal-richtext"></i>
                       <span>From</span>
                       <FormControl variant="filled" sx={{ minWidth: 220 }}>
-                        <InputLabel id="demo-simple-select-filled-label"></InputLabel>
+                        <InputLabel id="demo-simple-select-filled-label">
+                          select currency
+                        </InputLabel>
                         <Select
                           labelId="demo-simple-select-filled-label"
                           id="demo-simple-select-filled"
-                          value={age}
-                          onChange={handleChange}
+                          value={from}
+                          onChange={(e) => {
+                            setFrom(e.target.value);
+                          }}
                         >
                           <MenuItem value="">
                             <em>None</em>
                           </MenuItem>
-                          <MenuItem value={10}>Ten</MenuItem>
-                          <MenuItem value={20}>Twenty</MenuItem>
-                          <MenuItem value={30}>Thirty</MenuItem>
+                          <MenuItem value="INR">INR</MenuItem>
+                          <MenuItem value="KRW">KRW</MenuItem>
+                          <MenuItem value="USD">USD</MenuItem>
+                          <MenuItem value="EUR">EUR</MenuItem>
+                          <MenuItem value="CNY">CNY</MenuItem>
                         </Select>
                       </FormControl>
                     </div>
@@ -95,19 +138,25 @@ function Bodysection() {
                       <i className="bi bi-award"></i>
                       <span>To</span>
                       <FormControl variant="filled" sx={{ minWidth: 220 }}>
-                        <InputLabel id="demo-simple-select-filled-label"></InputLabel>
+                        <InputLabel id="demo-simple-select-filled-label">
+                          select currency
+                        </InputLabel>
                         <Select
                           labelId="demo-simple-select-filled-label"
                           id="demo-simple-select-filled"
-                          value={age}
-                          onChange={handleChange}
+                          value={to}
+                          onChange={(e) => {
+                            setTo(e.target.value);
+                          }}
                         >
                           <MenuItem value="">
                             <em>None</em>
                           </MenuItem>
-                          <MenuItem value={10}>Ten</MenuItem>
-                          <MenuItem value={20}>Twenty</MenuItem>
-                          <MenuItem value={30}>Thirty</MenuItem>
+                          <MenuItem value="INR">INR</MenuItem>
+                          <MenuItem value="KRW">KRW</MenuItem>
+                          <MenuItem value="USD">USD</MenuItem>
+                          <MenuItem value="EUR">EUR</MenuItem>
+                          <MenuItem value="CNY">CNY</MenuItem>
                         </Select>
                       </FormControl>
                     </div>
@@ -127,11 +176,11 @@ function Bodysection() {
                   aria-label="mailbox folders"
                 >
                   <ListItem>
-                    <ListItemText primary="Exchange Rate" />= 00.0
+                    <ListItemText primary="Exchange Rate" />= {results}
                   </ListItem>
                   <Divider />
                   <ListItem divider>
-                    <ListItemText primary="Exchange Amount" />= 00.0
+                    <ListItemText primary="Exchange Amount" />={results}
                   </ListItem>
                   <Divider light />
                 </List>
@@ -141,7 +190,7 @@ function Bodysection() {
                 style={{ paddingLeft: "37%" }}
                 className="col-lg-6 pt-3 pt-lg-0 content"
               >
-                <Button variant="contained" size="large">
+                <Button onClick={handleSubmit} variant="contained" size="large">
                   convert
                 </Button>
               </div>
