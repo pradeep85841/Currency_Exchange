@@ -7,23 +7,35 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
 import { AiOutlineSwap } from "react-icons/ai";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
 
-const resultStyle = {
-  width: "50%",
-  maxWidth: 360,
-  bgcolor: "background.paper",
-};
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+  [theme.breakpoints.down("md")]: {
+    padding: theme.spacing(2),
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: theme.spacing(3),
+  },
+  [theme.breakpoints.down("xs")]: {
+    padding: theme.spacing(4),
+  },
+}));
 
 function Bodysection() {
   const [amount, setAmount] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [results, setResults] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const fetchApi = async () => {
     await fetch(`https://currencyexchange-bec7.onrender.com/convert`, {
@@ -40,8 +52,8 @@ function Bodysection() {
     })
       .then((response) => response.json())
       .then((data) => {
-        let rate = data.amount;
-        setResults(rate);
+        setLoading(false);
+        setResults(data);
       })
       .catch(function (error) {
         console.log(
@@ -53,6 +65,7 @@ function Bodysection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     fetchApi();
   };
 
@@ -166,26 +179,29 @@ function Bodysection() {
             </div>
 
             <div className="row">
-              <div
-                style={{ paddingLeft: "90px" }}
-                className="col-lg-6 video-box align-self-baseline position-relative"
-              >
-                <List
-                  sx={resultStyle}
-                  component="nav"
-                  aria-label="mailbox folders"
+              {loading ? (
+                <div>Loading ...</div>
+              ) : (
+                <div
+                  style={{ paddingLeft: "90px" }}
+                  className="col-lg-6 video-box align-self-baseline position-relative"
                 >
-                  <ListItem>
-                    <ListItemText primary="Exchange Rate" />= {results}
-                  </ListItem>
-                  <Divider />
-                  <ListItem divider>
-                    <ListItemText primary="Exchange Amount" />={results}
-                  </ListItem>
-                  <Divider light />
-                </List>
-              </div>
-
+                  <Box sx={{ width: "100%" }}>
+                    <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
+                      <Grid item xs={12} sm={6} md={6} lg={6}>
+                        <Item>Min_Exchange Rate={results.min_rate}</Item>
+                        <Item>source={results.min_source}</Item>
+                        <Item>Amount={results.min_amount}</Item>
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={6} lg={6}>
+                        <Item>Max_Exchange Rate={results.max_rate}</Item>
+                        <Item>source={results.max_source}</Item>
+                        <Item>Amount={results.max_amount}</Item>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </div>
+              )}
               <div
                 style={{ paddingLeft: "37%" }}
                 className="col-lg-6 pt-3 pt-lg-0 content"
