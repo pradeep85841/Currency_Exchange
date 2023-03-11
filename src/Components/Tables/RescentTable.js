@@ -58,7 +58,7 @@ export default function RescentList() {
       {content.data && (
         <Box sx={{ width: "85%" }} style={{ margin: "auto" }}>
           <Typography variant="h6" component="div" sx={{ mb: 2 }}>
-            <h2>Rescent Conertions</h2>
+            <h2>Rescent Conversions</h2>
           </Typography>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
