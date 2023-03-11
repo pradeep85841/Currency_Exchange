@@ -1,97 +1,135 @@
 import React from "react";
+import {
+  MDBFooter,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+} from "mdb-react-ui-kit";
 
-const Footer = () => {
+export default function App() {
   return (
-    <div>
-      <br></br>
-      <footer id="footer">
-        <div class="footer-top">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-3 col-md-6 footer-info">
-                <h3>Currency Exchange</h3>
-                <p>
-                  Cras fermentum odio eu feugiat lide par naso tierra. Justo
-                  eget nada terra videa magna derita valies darta donna mare
-                  fermentum iaculis eu non diam phasellus. Scelerisque felis
-                  imperdiet proin fermentum leo. Amet volutpat consequat mauris
-                  nunc congue.
-                </p>
-              </div>
-              <div class="col-lg-3 col-md-6 footer-links">
-                <h4>Useful Links</h4>
-                <ul>
-                  <li>
-                    <a>Home</a>
-                  </li>
-                  <li>
-                    <a>About us</a>
-                  </li>
-                  <li>
-                    <a>Services</a>
-                  </li>
-                  <li>
-                    <a>Terms of service</a>
-                  </li>
-                  <li>
-                    <a>Privacy policy</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-3 col-md-6 footer-contact">
-                <h4>Contact Us</h4>
-                <p>
-                  A108 Adam Street <br></br>
-                  New York, NY 535022<br></br>
-                  United States <br></br>
-                  <strong>Phone:</strong> +1 5589 55488 55<br></br>
-                  <strong>Email:</strong> info@example.com<br></br>
-                </p>
-                <div class="social-links">
-                  <a class="twitter">
-                    <i class="bi bi-twitter"></i>
-                  </a>
-                  <a class="facebook">
-                    <i class="bi bi-facebook"></i>
-                  </a>
-                  <a class="instagram">
-                    <i class="bi bi-instagram"></i>
-                  </a>
-                  <a class="linkedin">
-                    <i class="bi bi-linkedin"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 footer-newsletter">
-                <h4>Our Newsletter</h4>
-                <p>
-                  Tamen quem nulla quae legam multos aute sint culpa legam
-                  noster magna veniam enim veniam illum dolore legam minim
-                  quorum culpa amet magna export quem marada parida nodela
-                  caramase seza.
-                </p>
-                <form action="" method="post" />
-                <input type="email" name="email" />
-                <input type="submit" value="Subscribe" />
-              </div>
-            </div>
-          </div>
+    <MDBFooter bgColor="light" className="text-center text-lg-start text-muted">
+      <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <div className="me-5 d-none d-lg-block">
+          <span>Get connected with us on social networks:</span>
         </div>
-        <div class="container">
-          <div class="copyright">
-            &copy; Copyright{" "}
-            <strong>
-              <span>currency exchange</span>
-            </strong>
-            . All Rights Reserved
-          </div>
-          <div class="credits">
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-};
 
-export default Footer;
+        <div>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="facebook-f" />
+          </a>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="twitter" />
+          </a>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="google" />
+          </a>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="instagram" />
+          </a>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="linkedin" />
+          </a>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="github" />
+          </a>
+        </div>
+      </section>
+
+      <section className="">
+        <MDBContainer className="text-center text-md-start mt-5">
+          <MDBRow className="mt-3">
+            <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">
+                <MDBIcon icon="gem" className="me-3" />
+                Company name
+              </h6>
+              <p>
+                Here you can use rows and columns to organize your footer
+                content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit.
+              </p>
+            </MDBCol>
+
+            <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Products</h6>
+              <p>
+                <a href="#!" className="text-reset">
+                  Angular
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  React
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  Vue
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  Laravel
+                </a>
+              </p>
+            </MDBCol>
+
+            <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
+              <p>
+                <a href="#!" className="text-reset">
+                  Pricing
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  Settings
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  Orders
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  Help
+                </a>
+              </p>
+            </MDBCol>
+
+            <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
+              <p>
+                <MDBIcon icon="home" className="me-2" />
+                New York, NY 10012, US
+              </p>
+              <p>
+                <MDBIcon icon="envelope" className="me-3" />
+                info@example.com
+              </p>
+              <p>
+                <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88
+              </p>
+              <p>
+                <MDBIcon icon="print" className="me-3" /> + 01 234 567 89
+              </p>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+      </section>
+
+      <div
+        className="text-center p-4"
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
+      >
+        © 2021 Copyright:
+        <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
+          currency exchange
+        </a>
+      </div>
+    </MDBFooter>
+  );
+}
